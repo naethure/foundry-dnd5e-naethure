@@ -347,6 +347,9 @@ export default class ActorSheet5e extends ActorSheet {
       if ( filters.has("concentration") ) {
         if (data.components.concentration !== true) return false;
       }
+      if ( filters.has("non-concentration") ) {
+        if (data.components.concentration !== false) return false;
+      }
       if ( filters.has("prepared") ) {
         if ( data.level === 0 || ["innate", "always"].includes(data.preparation.mode) ) return true;
         if ( this.actor.data.type === "npc" ) return true;
