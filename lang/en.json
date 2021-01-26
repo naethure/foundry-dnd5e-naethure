@@ -681,8 +681,8 @@
 "DND5E.per": "per",
 "DND5E.spell": "spell",
 
-"SETTINGS.5ePrintDeathSaveResultsL": "Send death save results (died or stabilized) to chat.",
-"SETTINGS.5ePrintDeathSaveResultsN": "Print Death Save Results",
+"SETTINGS.5ePublicPrintDeathSaveResultsL": "Send death save results (died or stabilized) publicly to chat (will whisper to the GM when turned off).",
+"SETTINGS.5ePublicPrintDeathSaveResultsN": "Public Print Death Save Results",
 "SETTINGS.5eAllowPolymorphingL": "Allow players to polymorph their own actors.",
 "SETTINGS.5eAllowPolymorphingN": "Allow Polymorphing",
 "SETTINGS.5eAutoCollapseCardL": "Automatically collapse Item Card descriptions in the Chat Log",

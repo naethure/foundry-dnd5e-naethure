@@ -908,8 +908,10 @@ export default class Actor5e extends Actor {
           "data.attributes.death.success": 0,
           "data.attributes.death.failure": 0
         });
-        if(game.settings.get("dnd5e", "printDeathSaveResults")) {
+        if(game.settings.get("dnd5e", "publicPrintDeathSaveResults")) {
           await ChatMessage.create({content: game.i18n.format("DND5E.DeathSaveSuccess", {name: this.name}), speaker});
+        } else {
+          await ChatMessage.create({type:CHAT_MESSAGE_TYPES.WHISPER, content: game.i18n.format("DND5E.DeathSaveSuccess", {name: this.name}), speaker, whisper : game.users.entities.filter(u => u.isGM).map(u => u._id)});
         }
       }
 
@@ -922,8 +924,10 @@ export default class Actor5e extends Actor {
       let failures = (death.failure || 0) + (d20 === 1 ? 2 : 1);
       await this.update({"data.attributes.death.failure": Math.clamped(failures, 0, 3)});
       if ( failures >= 3 ) {  // 3 Failures = death
-        if(game.settings.get("dnd5e", "printDeathSaveResults")) {
+        if(game.settings.get("dnd5e", "publicPrintDeathSaveResults")) {
           await ChatMessage.create({content: game.i18n.format("DND5E.DeathSaveFailure", {name: this.name}), speaker});
+        } else {
+          await ChatMessage.create({type:CHAT_MESSAGE_TYPES.WHISPER, content: game.i18n.format("DND5E.DeathSaveFailure", {name: this.name}), speaker, whisper : game.users.entities.filter(u => u.isGM).map(u => u._id)});
         }
       }
     }

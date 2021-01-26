@@ -135,9 +135,9 @@ export const registerSystemSettings = function() {
   /**
    * Option to not print any death save resulst.
    */
-  game.settings.register('dnd5e', 'printDeathSaveResults', {
-    name: 'SETTINGS.5ePrintDeathSaveResultsN',
-    hint: 'SETTINGS.5ePrintDeathSaveResultsL',
+  game.settings.register('dnd5e', 'publicPrintDeathSaveResults', {
+    name: 'SETTINGS.5ePublicPrintDeathSaveResultsN',
+    hint: 'SETTINGS.5ePublicPrintDeathSaveResultsL',
     scope: 'world',
     config: true,
     default: true,
