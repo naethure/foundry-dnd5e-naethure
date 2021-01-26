@@ -873,6 +873,7 @@ export default class Actor5e extends Actor {
     const rollData = mergeObject(options, {
       parts: parts,
       data: data,
+      rollMode: "gmroll",
       title: game.i18n.localize("DND5E.DeathSavingThrow"),
       speaker: speaker,
       halflingLucky: this.getFlag("dnd5e", "halflingLucky"),
@@ -907,7 +908,9 @@ export default class Actor5e extends Actor {
           "data.attributes.death.success": 0,
           "data.attributes.death.failure": 0
         });
-        await ChatMessage.create({content: game.i18n.format("DND5E.DeathSaveSuccess", {name: this.name}), speaker});
+        if(game.settings.get("dnd5e", "printDeathSaveResults")) {
+          await ChatMessage.create({content: game.i18n.format("DND5E.DeathSaveSuccess", {name: this.name}), speaker});
+        }
       }
 
       // Increment successes
@@ -919,7 +922,9 @@ export default class Actor5e extends Actor {
       let failures = (death.failure || 0) + (d20 === 1 ? 2 : 1);
       await this.update({"data.attributes.death.failure": Math.clamped(failures, 0, 3)});
       if ( failures >= 3 ) {  // 3 Failures = death
-        await ChatMessage.create({content: game.i18n.format("DND5E.DeathSaveFailure", {name: this.name}), speaker});
+        if(game.settings.get("dnd5e", "printDeathSaveResults")) {
+          await ChatMessage.create({content: game.i18n.format("DND5E.DeathSaveFailure", {name: this.name}), speaker});
+        }
       }
     }
 

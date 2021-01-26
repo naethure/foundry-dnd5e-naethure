@@ -108,7 +108,7 @@ export const registerSystemSettings = function() {
     default: false,
     type: Boolean
   });
-
+  
   /**
    * Remember last-used polymorph settings.
    */
@@ -130,4 +130,18 @@ export const registerSystemSettings = function() {
       transformTokens: true
     }
   });
+
+  
+  /**
+   * Option to not print any death save resulst.
+   */
+  game.settings.register('dnd5e', 'printDeathSaveResults', {
+    name: 'SETTINGS.5ePrintDeathSaveResultsN',
+    hint: 'SETTINGS.5ePrintDeathSaveResultsL',
+    scope: 'world',
+    config: true,
+    default: true,
+    type: Boolean
+  });
+
 };
