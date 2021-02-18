@@ -340,6 +340,11 @@ export default class ActorSheet5e extends ActorSheet {
         }
       }
 
+      // Hide Combat Wild Shape when not polymorphed
+      if(!this.actor.isPolymorphed && item.name == "Combat Wild Shape") {
+        return false;
+      }
+      
       // Spell-specific filters
       if ( filters.has("ritual") ) {
         if (data.components.ritual !== true) return false;
@@ -359,11 +364,6 @@ export default class ActorSheet5e extends ActorSheet {
       // Equipment-specific filters
       if ( filters.has("equipped") ) {
         if ( data.equipped !== true ) return false;
-      }
-
-      // Hide Combat Wild Shape when not polymorphed
-      if(!this.actor.isPolymorphed && item.name == "Combat Wild Shape") {
-        return false;
       }
 
       return true;

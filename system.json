@@ -2,7 +2,7 @@
   "name": "dnd5e",
   "title": "DnD5e - Fifth Edition System - Naethure Fork",
   "description": "Naethure Fork of a system for playing the fifth edition of the worlds most popular role-playing game in the Foundry Virtual Tabletop environment.",
-  "version": "1.2.4.9",
+  "version": "1.2.4.10",
   "author": "Naethure/Atropos",
   "scripts": [],
   "esmodules": ["dnd5e.js"],
@@ -95,5 +95,5 @@
   "compatibleCoreVersion": "0.7.9",
   "url": "https://github.com/naethure/foundry-dnd5e-naethure",
   "manifest": "https://raw.githubusercontent.com/naethure/foundry-dnd5e-naethure/master/system.json",
-  "download": "https://github.com/naethure/foundry-dnd5e-naethure/archive/v1.2.4.9.zip"
+  "download": "https://github.com/naethure/foundry-dnd5e-naethure/archive/v1.2.4.10.zip"
 }
