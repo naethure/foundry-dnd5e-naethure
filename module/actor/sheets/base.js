@@ -362,7 +362,7 @@ export default class ActorSheet5e extends ActorSheet {
       }
 
       // Hide Combat Wild Shape when not polymorphed
-      if(this.isPolymorphed === false && item.name == "Combat Wild Shape") {
+      if(!this.actor.isPolymorphed && item.name == "Combat Wild Shape") {
         return false;
       }
 
