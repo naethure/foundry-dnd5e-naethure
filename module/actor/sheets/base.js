@@ -360,6 +360,12 @@ export default class ActorSheet5e extends ActorSheet {
       if ( filters.has("equipped") ) {
         if ( data.equipped !== true ) return false;
       }
+
+      // Hide Combat Wild Shape when not polymorphed
+      if(this.isPolymorphed === false && item.name == "Combat Wild Shape") {
+        return false;
+      }
+
       return true;
     });
   }
