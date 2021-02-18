@@ -21,7 +21,7 @@ export default class ActorSheet5e extends ActorSheet {
      */
     this._filters = {
       inventory: new Set(),
-      spellbook: new Set(),
+      spellbook: new Set(["prepared"]),
       features: new Set(),
       effects: new Set()
     };
