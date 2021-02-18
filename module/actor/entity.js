@@ -869,6 +869,11 @@ export default class Actor5e extends Actor {
       data.saveBonus = bonuses.save;
     }
 
+    let rollTarget = 10;
+    if(game.settings.settings.has("naethures-amalgamation.WeightedDice.Enabled") && game.settings.get("naethures-amalgamation", "WeightedDice.Enabled")) {
+      rollTarget = 11;
+    }
+
     // Evaluate the roll
     const rollData = mergeObject(options, {
       parts: parts,
@@ -877,7 +882,7 @@ export default class Actor5e extends Actor {
       title: game.i18n.localize("DND5E.DeathSavingThrow"),
       speaker: speaker,
       halflingLucky: this.getFlag("dnd5e", "halflingLucky"),
-      targetValue: 10,
+      targetValue: rollTarget,
       messageData: {"flags.dnd5e.roll": {type: "death"}}
     });
     rollData.speaker = speaker;
@@ -885,7 +890,7 @@ export default class Actor5e extends Actor {
     if ( !roll ) return null;
 
     // Take action depending on the result
-    const success = roll.total >= 10;
+    let success = roll.total >= rollTarget;
     const d20 = roll.dice[0].total;
 
     // Save success
@@ -1326,6 +1331,7 @@ export default class Actor5e extends Actor {
       if ( i.type === "class" ) return keepClass;
       else if ( i.type === "feat" ) return keepFeats;
       else if ( i.type === "spell" ) return keepSpells;
+      else if ( i.name == "Combat Wild Shape" ) return true;
       else return keepItems;
     }));
 
