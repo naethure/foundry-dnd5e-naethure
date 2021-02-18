@@ -1407,9 +1407,12 @@ export default class Actor5e extends Actor {
     // Obtain a reference to the original actor
     const original = game.actors.get(this.getFlag('dnd5e', 'originalActor'));
     if ( !original ) return;
-    original.data.data.attributes.exhaustion = this.data.data.attributes.exhaustion; // Update exhaustion level
-    original.data.data.attributes.inspiration = this.data.data.attributes.inspiration; // Update inspiration
-    original.data.data.spells = this.data.data.spells; // Update spell slots
+    const updates = {
+      "data.attributes.exhaustion": this.data.data.attributes.exhaustion,
+      "data.attributes.inspiration": this.data.data.attributes.inspiration,
+      "data.spells": this.data.data.spells
+    };
+    await original.update(updates);
 
     // Get the Tokens which represent this actor
     if ( canvas.ready ) {
