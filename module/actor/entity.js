@@ -1328,7 +1328,7 @@ export default class Actor5e extends Actor {
 
     // Keep specific items from the original data
     d.items = d.items.concat(o.items.filter(i => {
-      if ( i.name == "Combat Wild Shape" ) return true;
+      if ( i.name === "Combat Wild Shape" || i.name === "Primal Strike") return true;
       else if ( i.type === "class" ) return keepClass;
       else if ( i.type === "feat" ) return keepFeats;
       else if ( i.type === "spell" ) return keepSpells;

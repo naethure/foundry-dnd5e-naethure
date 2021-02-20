@@ -340,8 +340,8 @@ export default class ActorSheet5e extends ActorSheet {
         }
       }
 
-      // Hide Combat Wild Shape when not polymorphed
-      if(!this.actor.isPolymorphed && item.name == "Combat Wild Shape") {
+      // Hide Combat Wild Shape and Primal Strike when not polymorphed
+      if(!this.actor.isPolymorphed && (item.name === "Combat Wild Shape" || item.name === "Primal Strike")) {
         return false;
       }
       
